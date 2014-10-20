@@ -5,7 +5,10 @@ class EmployeeController {
     def employeeService
 
     def stats() {
-        [ genderHisto: employeeService.genderHisto ]
+        def genderHisto = employeeService.genderHisto
+        def count = genderHisto.values().sum() ?: 0
+
+        [ genderHisto: genderHisto, count: count ]
     }
 
 }
