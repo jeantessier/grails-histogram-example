@@ -1,0 +1,6 @@
+class Employee {
+
+    String gender
+
+}
+
