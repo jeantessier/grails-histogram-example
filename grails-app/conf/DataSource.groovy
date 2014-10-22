@@ -17,7 +17,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "none"
             url = "jdbc:mysql://localhost/histo?useUnicode=yes&characterEncoding=UTF-8"
         }
     }
