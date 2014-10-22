@@ -2,28 +2,7 @@
 
 <head>
 <title>Stats</title>
-
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<g:javascript> 
-google.load("visualization", "1", {packages:["corechart"]}); 
-google.setOnLoadCallback(drawChart); 
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([ 
-        ['Gender', 'Total'],
-        <g:each var="entry" in="${genderHisto}">
-            ['${entry.key}', ${entry.value} ],
-        </g:each>
-    ]);
-
-    var options = { 
-        title: 'Employees by gender'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options); 
-} 
-</g:javascript> 
+<gvisualization:apiImport/>
 </head>
 
 <body>
@@ -43,7 +22,8 @@ function drawChart() {
     </g:each>
 </table>
 
-<div id="piechart" style="width: 900px; height: 500px;"></div> 
+<gvisualization:pieCoreChart elementId="piechart" width="${900}" height="${500}" columns="${[ [ "string", "Gender" ], [ "number", "Total" ] ]}" data="${genderHisto.collect { k, v -> [ k, v ] }}"/>
+<div id="piechart"></div> 
 
 </body>
 
